@@ -1,4 +1,4 @@
-package main
+package jianzhi
 
 func NumberOf1(num int) int {
 	count := 0

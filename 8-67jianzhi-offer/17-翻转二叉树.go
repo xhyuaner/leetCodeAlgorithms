@@ -1,4 +1,4 @@
-package main
+package jianzhi
 
 func mirrorTree(root *TreeNode) *TreeNode {
 	if root == nil {

@@ -1,4 +1,4 @@
-package main
+package jianzhi
 
 type TreeNode struct {
 	Val   int

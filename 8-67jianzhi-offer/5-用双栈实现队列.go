@@ -1,4 +1,4 @@
-package main
+package jianzhi
 
 type MyQueue struct {
 	inStack, outStack []int

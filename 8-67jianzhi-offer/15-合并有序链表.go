@@ -1,4 +1,4 @@
-package main
+package jianzhi
 
 func Merge(pHead1 *ListNode, pHead2 *ListNode) *ListNode {
 	if pHead1 == nil {

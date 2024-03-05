@@ -1,4 +1,4 @@
-package main
+package jianzhi
 
 func removeNthFromEnd(head *ListNode, n int) *ListNode {
 	// 如果链表为空，或者只有一个结点，直接返回删除倒数第一个结点的结果nil
