@@ -1,25 +1,18 @@
 package jianzhi
 
 func removeNthFromEnd(head *ListNode, n int) *ListNode {
-	// 如果链表为空，或者只有一个结点，直接返回删除倒数第一个结点的结果nil
-	if head == nil || head.Next == nil {
-		return nil
+	dummy := &ListNode{Next: head}
+	// 让 slowNode 等于 dummy 而不是等于 head，是为了便于后面删除倒数第K个结点
+	slowNode := dummy
+	for n > 0 {
+		head = head.Next
+		n--
 	}
-	// 使用preNode结点，便于删除第N个结点
-	preNode := &ListNode{Next: head}
-	slowNode := head
-	fastNode := head
-	for ; n > 0; n-- {
-		fastNode = fastNode.Next
-	}
-	if fastNode == nil {
-		return preNode.Next.Next
-	}
-	for fastNode != nil {
-		preNode = slowNode
+	for head != nil {
+		head = head.Next
 		slowNode = slowNode.Next
-		fastNode = fastNode.Next
 	}
-	preNode.Next = preNode.Next.Next
-	return head
+	// 程序到这里，slowNode 结点是倒数第N个结点的前一个结点
+	slowNode.Next = slowNode.Next.Next
+	return dummy.Next
 }
