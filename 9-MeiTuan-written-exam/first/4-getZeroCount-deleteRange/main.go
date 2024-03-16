@@ -46,11 +46,7 @@ func main() {
 		arr[i], _ = strconv.Atoi(str)
 	}
 
-	fmt.Println("输入的数组:", arr)
-	fmt.Println("输入的整数k:", k)
+	//fmt.Println("输入的数组:", arr)
+	//fmt.Println("输入的整数k:", k)
 	fmt.Println(myFun(arr, k))
-
-	// 在这里调用你的算法函数，并输出结果
-	// result := countDeletePlans(arr, k)
-	// fmt.Println("删除方案数:", result)
 }
