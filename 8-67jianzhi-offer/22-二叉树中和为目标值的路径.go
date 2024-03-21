@@ -20,8 +20,6 @@ func pathTarget(root *TreeNode, target int) [][]int {
 		}
 		dfs(root.Left, cur, list)
 		dfs(root.Right, cur, list)
-		// 可不写，go的参数传递是值传递(值拷贝传递), 而引用类型的例如slice会随着递归的回溯过程返回上一层保存的副本。
-		// 回溯过程中的"破坏现场"“恢复现场”的操作甚至不需要显示的去做。就可以保证回溯的效果。
 		// list = list[:len(list)-1]
 	}
 	dfs(root, 0, []int{})
