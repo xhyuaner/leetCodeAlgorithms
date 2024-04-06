@@ -1,5 +1,13 @@
 package jianzhi
 
+/**
+ * isSubStructure
+ *  @Description: 给定两棵二叉树 tree1 和 tree2，判断 tree2 是否以 tree1 的某个节点为根的子树具有 相同的结构和节点值 。
+					注意，空树 不会是以 tree1 的某个节点为根的子树具有 相同的结构和节点值
+ *  @param A
+ *  @param B
+ *  @return bool
+*/
 func isSubStructure(A *TreeNode, B *TreeNode) bool {
 	if A == nil || B == nil {
 		return false

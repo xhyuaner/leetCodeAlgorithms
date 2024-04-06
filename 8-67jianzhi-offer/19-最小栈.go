@@ -1,12 +1,13 @@
 package jianzhi
 
+// 请你设计一个 最小栈 。它提供 push ，pop ，top 操作，并能在常数时间内检索到最小元素的栈。
 type MinStack struct {
 	a []int // 数据栈，存储所有元素
 	b []int // 辅助栈，存储a中非严格降序元素
 
 }
 
-func Constructor() MinStack {
+func Constructor2() MinStack {
 	return MinStack{}
 }
 

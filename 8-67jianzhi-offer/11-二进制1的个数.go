@@ -1,5 +1,11 @@
 package jianzhi
 
+/**
+ * NumberOf1
+ *  @Description: 输入一个整数，输出该数32位二进制表示中1的个数。其中负数用补码表示
+ *  @param num
+ *  @return int
+ */
 func NumberOf1(num int) int {
 	count := 0
 	for num != 0 {

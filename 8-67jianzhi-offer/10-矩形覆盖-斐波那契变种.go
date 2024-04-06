@@ -2,7 +2,7 @@ package jianzhi
 
 /**
  * rectCover
- *  @Description: 用 2*1 的小矩形横着或者竖着去覆盖更大的矩形。请问用 n 个 2*1 的小矩形无重叠地覆盖一个 2*n 的大矩形
+ *  @Description: 用 2*1 的小矩形横着或者竖着去覆盖更大的矩形。请问用 n 个 2*1 的小矩形无重叠地覆盖一个 2*n 的大矩形,总共有多少种方法？
  *  @param num
  *  @return int
  */
