@@ -8,9 +8,8 @@ func main() {
 	cur := dummy
 
 	for _, value := range list {
-		newNode := &ListNode{Val: value}
-		cur.Next = newNode
-		cur = newNode
+		cur.Next = &ListNode{Val: value}
+		cur = cur.Next
 	}
 	PrintList(dummy.Next)
 	PrintList(reverseList(dummy.Next))
