@@ -58,16 +58,16 @@ func (this *LRUCache) Put(key int, value int) {
 	}
 }
 
-func (this *LRUCache) removeNode(node *DLinkNode) {
-	node.prev.next = node.next
-	node.next.prev = node.prev
-}
-
 func (this *LRUCache) addToHead(node *DLinkNode) {
 	node.prev = this.head
 	node.next = this.head.next
 	this.head.next.prev = node
 	this.head.next = node
+}
+
+func (this *LRUCache) removeNode(node *DLinkNode) {
+	node.prev.next = node.next
+	node.next.prev = node.prev
 }
 
 func (this *LRUCache) moveToHead(node *DLinkNode) {

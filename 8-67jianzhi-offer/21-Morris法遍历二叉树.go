@@ -50,7 +50,7 @@ func inorderTraversal(root *TreeNode) (result []int) {
 				p1 = p1.Left
 			} else {
 				result = append(result, p1.Val)
-				// p1回到上次所在位置后，再次寻找左子树最右边结点，发现已经有了连线，此时切断连线，并将p1.Left添加到返回列表
+				// p1回到上次所在位置后，再次寻找左子树最右边结点，发现已经有了连线，此时切断连线，并将p1添加到返回列表
 				p2.Right = nil
 				p1 = p1.Right
 			}
@@ -61,12 +61,6 @@ func inorderTraversal(root *TreeNode) (result []int) {
 		}
 	}
 	return
-}
-
-func reverse(list []int) {
-	for i, j := 0, len(list)-1; i < j; i, j = i+1, j-1 {
-		list[i], list[j] = list[j], list[i]
-	}
 }
 
 /**
@@ -107,4 +101,10 @@ func postorderTraversal(root *TreeNode) (result []int) {
 	}
 	addPath(root)
 	return
+}
+
+func reverse(list []int) {
+	for i, j := 0, len(list)-1; i < j; i, j = i+1, j-1 {
+		list[i], list[j] = list[j], list[i]
+	}
 }
