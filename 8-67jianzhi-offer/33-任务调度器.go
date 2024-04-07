@@ -23,5 +23,6 @@ func leastInterval(tasks []byte, n int) int {
 		}
 	}
 	result := (maxCount-1)*(n+1) + maxKinds
+	// 取最大是为了避免n=0的情况
 	return max(result, len(tasks))
 }
