@@ -8,7 +8,7 @@ package jianzhi
  *  @return ans
 */
 func partition(s string) (ans [][]string) {
-	path := []string{}
+	var path []string
 	n := len(s)
 	var dfs func(int)
 	dfs = func(i int) {

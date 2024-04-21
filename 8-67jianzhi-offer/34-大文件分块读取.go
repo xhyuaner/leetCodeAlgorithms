@@ -25,7 +25,6 @@ func main() {
 	// 使用bufio.NewReader().Read()方法进行分块读取文件，并且创建一个指定大小的byte切片的缓冲区来存放每一块文件
 	bytes := make([]byte, 6)
 	for {
-		// Read不会，单独返回EOF
 		c, err := reader.Read(bytes)
 		if err == nil {
 			// 对每块文件执行操作，可以启动多个goroutine进行处理

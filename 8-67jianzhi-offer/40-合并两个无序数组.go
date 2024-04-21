@@ -4,7 +4,7 @@ import "fmt"
 
 /**
  * mergeArray
- *  @Description: 合并两个无序数组，递增返回n个最大值 --- 归并排序
+ *  @Description: 合并两个无序数组，递增返回k个最大值 --- 归并排序
  *  @param a
  *  @param b
  *  @param k

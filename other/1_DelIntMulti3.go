@@ -1,4 +1,4 @@
-package main
+package other
 
 /*
 【整数列表求三的倍数】

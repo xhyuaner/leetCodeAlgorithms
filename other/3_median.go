@@ -1,4 +1,4 @@
-package main
+package other
 
 // --------------------解法一：二分查找两有序数组中位数---------------------------
 // func findMedianSortArrays(nums1, nums2 []int) float64 {

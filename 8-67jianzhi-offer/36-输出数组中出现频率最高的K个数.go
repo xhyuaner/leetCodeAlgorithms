@@ -19,6 +19,14 @@ func (h *Iheap) Pop() interface{} {
 	*h = (*h)[:len(*h)-1]
 	return x
 }
+
+/**
+ * topKFrequent
+ *  @Description: 输出前K个高频元素
+ *  @param nums
+ *  @param k
+ *  @return []int
+ */
 func topKFrequent(nums []int, k int) []int {
 	mp := map[int]int{}
 	for _, v := range nums {

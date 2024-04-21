@@ -1,4 +1,4 @@
-package main
+package other
 
 /*
 【两个有序数组合并】
