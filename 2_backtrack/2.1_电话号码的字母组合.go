@@ -25,7 +25,7 @@ var phoneMap = map[string]string{
 }
 var ans []string
 
-func letterCombinations(digits string) []string {
+func LetterCombinations(digits string) []string {
 	if len(digits) == 0 {
 		return []string{}
 	}

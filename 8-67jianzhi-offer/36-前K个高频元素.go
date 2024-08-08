@@ -27,7 +27,7 @@ func (h *Iheap) Pop() interface{} {
  *  @param k
  *  @return []int
  */
-func topKFrequent(nums []int, k int) []int {
+func TopKFrequent(nums []int, k int) []int {
 	mp := map[int]int{}
 	for _, v := range nums {
 		mp[v]++

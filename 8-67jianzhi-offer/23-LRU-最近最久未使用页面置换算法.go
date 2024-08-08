@@ -1,82 +1,79 @@
 package jianzhi
 
 type LRUCache struct {
-	size       int
-	capacity   int
-	cache      map[int]*DLinkNode
-	head, tail *DLinkNode
+	size, capacity int
+	cache          map[int]*DLinkNode
+	head, tail     *DLinkNode
 }
 
 type DLinkNode struct {
-	key, value int
-	next, prev *DLinkNode
+	key, val  int
+	pre, next *DLinkNode
 }
 
-func initDLinkNode(key int, value int) *DLinkNode {
+func initDLinkNode(key, value int) *DLinkNode {
 	return &DLinkNode{
-		key:   key,
-		value: value,
+		key: key,
+		val: value,
 	}
 }
 
-func Constructor(capacity int) LRUCache {
-	l := LRUCache{
-		capacity: capacity,
-		cache:    make(map[int]*DLinkNode, capacity),
+func Constructor(cap int) LRUCache {
+	lru := LRUCache{
+		capacity: cap,
+		cache:    make(map[int]*DLinkNode, cap),
 		head:     initDLinkNode(0, 0),
 		tail:     initDLinkNode(0, 0),
 	}
-	l.head.next = l.tail
-	l.tail.prev = l.head
-	return l
+	lru.head.next = lru.tail
+	lru.tail.pre = lru.head
+	return lru
 }
 
-func (this *LRUCache) Get(key int) int {
-	if _, ok := this.cache[key]; !ok {
-		return -1
+func (l *LRUCache) Get(key int) int {
+	if node, exist := l.cache[key]; exist {
+		l.moveToHead(node)
+		return node.val
 	}
-	node := this.cache[key]
-	this.moveToHead(node)
-	return node.value
+	return -1
 }
 
-func (this *LRUCache) Put(key int, value int) {
-	if _, ok := this.cache[key]; !ok {
-		node := initDLinkNode(key, value)
-		this.cache[key] = node
-		this.addToHead(node)
-		this.size++
-		if this.size > this.capacity {
-			node = this.removeTail()
-			delete(this.cache, node.key)
-			this.size--
-		}
-	} else {
-		node := this.cache[key]
-		node.value = value
-		this.moveToHead(node)
+func (l *LRUCache) Put(key, value int) {
+	if node, exist := l.cache[key]; exist {
+		node.val = value
+		l.moveToHead(node)
+		return
+	}
+	newNode := initDLinkNode(key, value)
+	l.cache[key] = newNode
+	l.addToHead(newNode)
+	l.size++
+	if l.size > l.capacity {
+		tailNode := l.removeTail()
+		delete(l.cache, tailNode.key)
+		l.size--
 	}
 }
 
-func (this *LRUCache) addToHead(node *DLinkNode) {
-	node.prev = this.head
-	node.next = this.head.next
-	this.head.next.prev = node
-	this.head.next = node
+func (l *LRUCache) moveToHead(node *DLinkNode) {
+	l.removeNode(node)
+	l.addToHead(node)
 }
 
-func (this *LRUCache) removeNode(node *DLinkNode) {
-	node.prev.next = node.next
-	node.next.prev = node.prev
+func (l *LRUCache) removeNode(node *DLinkNode) {
+	node.pre.next = node.next
+	node.next.pre = node.pre
 }
 
-func (this *LRUCache) moveToHead(node *DLinkNode) {
-	this.removeNode(node)
-	this.addToHead(node)
+func (l *LRUCache) addToHead(node *DLinkNode) {
+	node.pre = l.head
+	node.next = l.head.next
+	l.head.next.pre = node
+	l.head.next = node
 }
 
-func (this *LRUCache) removeTail() *DLinkNode {
-	node := this.tail.prev
-	this.removeNode(node)
-	return node
+func (l *LRUCache) removeTail() *DLinkNode {
+	tailNode := l.tail.pre
+	l.removeNode(tailNode)
+	return tailNode
 }

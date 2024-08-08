@@ -42,7 +42,7 @@ func search(nums []int, target int) int {
 	var mid int
 	left, right := 0, n-1
 	for left <= right {
-		mid = (left + right) / 2
+		mid = left + (right-left)/2
 		if nums[mid] == target {
 			return mid
 		}

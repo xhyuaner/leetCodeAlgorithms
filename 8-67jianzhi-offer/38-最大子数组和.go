@@ -1,17 +1,25 @@
 package jianzhi
 
-import "math"
-
-func maxSubArray(nums []int) int {
-	ans := math.MinInt
-	// [i,j]子数组和 = [0,j]前缀和 - [0,i]前缀和
-	// 要让子数组和最大，就要让 [0,i]前缀和 最小
-	// 所以维护了 当前前缀和preSum 和 最小前缀和minPreSum
-	minPreSum, preSum := 0, 0
-	for _, num := range nums {
-		preSum += num
-		ans = max(ans, preSum-minPreSum)
-		minPreSum = min(minPreSum, preSum)
+/*
+*
+  - maxSubArray
+  - @Description:
+    输入：nums = [-2,1,-3,4,-1,2,1,-5,4]
+    -2,1,-2,4,3,5,6,1,5
+    输出：6
+    解释：连续子数组 [4,-1,2,1] 的和最大，为 6 。
+  - @param nums
+  - @return int
+*/
+func MaxSubArray(nums []int) int {
+	ans := nums[0]
+	for i := 1; i < len(nums); i++ {
+		if nums[i]+nums[i-1] > nums[i] {
+			nums[i] += nums[i-1]
+		}
+		if nums[i] > ans {
+			ans = nums[i]
+		}
 	}
 	return ans
 }

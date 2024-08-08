@@ -1,7 +1,5 @@
 package jianzhi
 
-import "fmt"
-
 /**
  * mergeArray
  *  @Description: 合并两个无序数组，递增返回k个最大值 --- 归并排序
@@ -10,7 +8,7 @@ import "fmt"
  *  @param k
  *  @return ans
  */
-func mergeArray(a, b []int, k int) (ans []int) {
+func MergeArray(a, b []int, k int) []int {
 	var sort func(arr []int) []int
 	sort = func(arr []int) []int {
 		if len(arr) < 2 {
@@ -23,11 +21,7 @@ func mergeArray(a, b []int, k int) (ans []int) {
 	}
 	le := sort(a)
 	ri := sort(b)
-	resArr := merge2(le, ri)
-	for i := 0; i < k; i++ {
-		ans = append(ans, resArr[i])
-	}
-	return ans
+	return merge2(le, ri)[:k]
 }
 
 func merge2(left, right []int) (ans []int) {
@@ -44,11 +38,4 @@ func merge2(left, right []int) (ans []int) {
 	ans = append(ans, left[l:]...)
 	ans = append(ans, right[r:]...)
 	return ans
-}
-func main() {
-	arr1 := []int{38, 27, 43}
-	arr2 := []int{3, 9, 82, 10}
-	//fmt.Println("Original array:", arr)
-	res := mergeArray(arr1, arr2, 3)
-	fmt.Println("Sorted array:", res)
 }

@@ -25,3 +25,22 @@ func pathTarget(root *TreeNode, target int) [][]int {
 	dfs(root, 0, []int{})
 	return ans
 }
+
+//func myfun(root *TreeNode, target int) (ans [][]int) {
+//	var dfs func(node *TreeNode, cur int, list []int)
+//	dfs = func(node *TreeNode, cur int, list []int) {
+//		if node == nil {
+//			return
+//		}
+//		list = append(list, node.Val)
+//		cur += node.Val
+//		if cur == target && node.Left == nil && node.Right == nil {
+//			ans = append(ans, append([]int{}, list...))
+//			return
+//		}
+//		dfs(node.Left, cur, list)
+//		dfs(node.Right, cur, list)
+//	}
+//	dfs(root, 0, []int{})
+//	return
+//}

@@ -71,3 +71,10 @@ func isAVGtree(t *tree) (bool, int) {
 	//}
 	//return false
 }
+
+func max(a, b int) int {
+	if a > b {
+		return a
+	}
+	return b
+}

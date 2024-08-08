@@ -1,6 +1,7 @@
 package backtrack
 
-/**
+/*
+*
 Tag: 回溯算法
 
 Description:
@@ -14,7 +15,7 @@ Analysis:
 时间复杂度：O(4^n / n^(1/2))
 空间复杂度：O(n)
 */
-func generateParenthesis(n int) (ans []string) {
+func generateBracket(n int) (ans []string) {
 	// 定义一个临时字符数组
 	var cur []rune
 	// 递归生成括号组合

@@ -1,6 +1,7 @@
 package main
 
-/**
+/*
+*
 Tag: 模拟
 
 Description:
@@ -46,13 +47,13 @@ func reverseKGroup(head *ListNode, k int) *ListNode {
 }
 
 func myReverse(head, tail *ListNode) (*ListNode, *ListNode) {
-	pre := tail.Next
+	lastPre := tail.Next
 	p := head
 	var nex *ListNode
-	for pre != tail {
+	for lastPre != tail {
 		nex = p.Next
-		p.Next = pre
-		pre = p
+		p.Next = lastPre
+		lastPre = p
 		p = nex
 	}
 	return tail, head

@@ -15,7 +15,7 @@ func deleteDuplicates(head *ListNode) *ListNode {
 			pre = cur
 		}
 	}
-	// 将pre结点的后一个结点置空
+	// 将pre结点的后一个结点置空，应对[11233]场景
 	pre.Next = cur
 	return head
 }

@@ -2,18 +2,18 @@ package jianzhi
 
 import "fmt"
 
-func main() {
-	list := []int{10, 20, 30, 40, 50, 60, 70, 80}
-	dummy := &ListNode{}
-	cur := dummy
-
-	for _, value := range list {
-		cur.Next = &ListNode{Val: value}
-		cur = cur.Next
-	}
-	PrintList(dummy.Next)
-	PrintList(reverseList(dummy.Next))
-}
+//func main() {
+//	list := []int{10, 20, 30, 40, 50, 60, 70, 80}
+//	dummy := &ListNode{}
+//	cur := dummy
+//
+//	for _, value := range list {
+//		cur.Next = &ListNode{Val: value}
+//		cur = cur.Next
+//	}
+//	PrintList(dummy.Next)
+//	PrintList(reverseList(dummy.Next))
+//}
 
 type ListNode struct {
 	Val  int

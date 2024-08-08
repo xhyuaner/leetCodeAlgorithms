@@ -1,34 +1,33 @@
 package jianzhi
 
-// 请你设计一个 最小栈 。它提供 push ，pop ，top 操作，并能在常数时间内检索到最小元素的栈。
+// MinStack 请你设计一个 最小栈 。它提供 push ，pop ，top 操作，并能在常数时间内检索到最小元素的栈。
 type MinStack struct {
-	a []int // 数据栈，存储所有元素
-	b []int // 辅助栈，存储a中非严格降序元素
-
+	dataStack      []int // 数据栈，存储所有元素
+	auxiliaryStack []int // 辅助栈，存储a中非严格降序元素
 }
 
 func Constructor2() MinStack {
 	return MinStack{}
 }
 
-func (this *MinStack) Push(x int) {
-	this.a = append(this.a, x)
-	if len(this.b) == 0 || x <= this.b[len(this.b)-1] {
-		this.b = append(this.b, x)
+func (s *MinStack) Push(x int) {
+	s.dataStack = append(s.dataStack, x)
+	if len(s.auxiliaryStack) == 0 || x <= s.auxiliaryStack[len(s.auxiliaryStack)-1] {
+		s.auxiliaryStack = append(s.auxiliaryStack, x)
 	}
 }
 
-func (this *MinStack) Pop() {
-	if this.a[len(this.a)-1] == this.b[len(this.b)-1] {
-		this.b = this.b[:len(this.b)-1]
+func (s *MinStack) Pop() {
+	if s.dataStack[len(s.dataStack)-1] == s.auxiliaryStack[len(s.auxiliaryStack)-1] {
+		s.auxiliaryStack = s.auxiliaryStack[:len(s.auxiliaryStack)-1]
 	}
-	this.a = this.a[:len(this.a)-1]
+	s.dataStack = s.dataStack[:len(s.dataStack)-1]
 }
 
-func (this *MinStack) Top() int {
-	return this.a[len(this.a)-1]
+func (s *MinStack) Top() int {
+	return s.dataStack[len(s.dataStack)-1]
 }
 
-func (this *MinStack) GetMin() int {
-	return this.b[len(this.b)-1]
+func (s *MinStack) GetMin() int {
+	return s.auxiliaryStack[len(s.auxiliaryStack)-1]
 }

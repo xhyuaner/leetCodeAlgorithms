@@ -6,20 +6,19 @@ package jianzhi
  *  @param height
  *  @return int
  */
-func trap(height []int) int {
-	ans := 0
-	left, right := 0, len(height)-1
-	preMax, sufMax := 0, 0
-	for left <= right {
-		preMax = max(preMax, height[left])
-		sufMax = max(sufMax, height[right])
+func trap(height []int) (ans int) {
+	l, r := 0, len(height)-1
+	var preMax, sufMax int
+	for l <= r {
+		preMax = max(preMax, height[l])
+		sufMax = max(sufMax, height[r])
 		if preMax < sufMax {
-			ans += preMax - height[left]
-			left++
+			ans += preMax - height[l]
+			l++
 		} else {
-			ans += sufMax - height[right]
-			right--
+			ans += sufMax - height[r]
+			r--
 		}
 	}
-	return ans
+	return
 }

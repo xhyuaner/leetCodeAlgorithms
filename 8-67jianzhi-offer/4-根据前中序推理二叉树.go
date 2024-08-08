@@ -29,6 +29,7 @@ func deduceTree(preorder []int, inorder []int) *TreeNode {
 		newTree := &TreeNode{Val: root}
 		i := inorderMap[root]
 		newTree.Left = recur(rootIndex+1, left, i-1)
+		// rootIndex+(i-left)+1：根节点索引 + 左子树长度 + 1 = 右子树的根结点索引
 		newTree.Right = recur(rootIndex+(i-left)+1, i+1, right)
 		return newTree
 	}

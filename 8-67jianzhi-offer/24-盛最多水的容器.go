@@ -6,17 +6,15 @@ package jianzhi
  *  @param height
  *  @return int
  */
-func maxArea(height []int) int {
-	ans := 0
-	left, right := 0, len(height)-1
-	for left < right {
-		area := (right - left) * min(height[left], height[right])
-		ans = max(ans, area)
-		if height[left] < height[right] {
-			left++
+func maxArea(height []int) (maxArea int) {
+	l, r := 0, len(height)-1
+	for l < r {
+		maxArea = max(maxArea, (r-l)*min(height[l], height[r]))
+		if height[l] < height[r] {
+			l++
 		} else {
-			right--
+			r--
 		}
 	}
-	return ans
+	return
 }

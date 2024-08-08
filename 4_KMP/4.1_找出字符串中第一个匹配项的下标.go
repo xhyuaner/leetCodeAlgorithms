@@ -18,7 +18,30 @@ Analysis:
 时间复杂度：O(m + n)
 空间复杂度：O(1)
 */
-// 获取无减一或者右移的next数组（前缀表）
+
+func strStr(haystack string, needle string) int {
+	m := len(needle)
+	if m == 0 {
+		return 0
+	}
+	j := 0
+	next := make([]int, m)
+	getNext(next, needle) // 获取next数组
+	for i := 0; i < len(haystack); i++ {
+		for j > 0 && haystack[i] != needle[j] {
+			j = next[j-1] // 回退到 j 的前一位
+		}
+		if haystack[i] == needle[j] {
+			j++
+		}
+		if j == m {
+			return i - m + 1
+		}
+	}
+	return -1
+}
+
+// 获取无减一或者右移的next数组（前缀表）abcabcc	0001230
 func getNext(next []int, s string) {
 	j := 0
 	next[0] = j
@@ -31,25 +54,4 @@ func getNext(next []int, s string) {
 		}
 		next[i] = j
 	}
-}
-func strStr(haystack string, needle string) int {
-	n := len(needle)
-	if n == 0 {
-		return 0
-	}
-	j := 0
-	next := make([]int, n)
-	getNext(next, needle) // 获取next数组
-	for i := 0; i < len(haystack); i++ {
-		for j > 0 && haystack[i] != needle[j] {
-			j = next[j-1] // 回退到 j 的前一位
-		}
-		if haystack[i] == needle[j] {
-			j++
-		}
-		if j == n {
-			return i - n + 1
-		}
-	}
-	return -1
 }

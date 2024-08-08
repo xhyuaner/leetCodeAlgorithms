@@ -1,15 +1,13 @@
 package jianzhi
 
-import "fmt"
-
-func main() {
-	nums := []int{21, 21, -21, -20, -17, -8, -6, -2, -2, -1, 0, 2, 3, 4, 4, 6, 11, 13, 14, 16, 17, 18, 20}
-	fmt.Println(search3(nums, 4))
-}
+//func main() {
+//	nums := []int{21, 21, -21, -20, -17, -8, -6, -2, -2, -1, 0, 2, 3, 4, 4, 6, 11, 13, 14, 16, 17, 18, 20}
+//	fmt.Println(search3(nums, 4))
+//}
 
 /**
  * findMin1
- *  @Description: 从不含有重复值的旋转数组中查找最小值
+ *  @Description: 从不含有重复值的旋转数组中查找最小值34512
  *  @param nums
  *  @return int
  */
